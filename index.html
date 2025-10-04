@@ -292,6 +292,14 @@ body {
   .hamburger {
     display: flex;
   }
+  .mobile-dropdown-toggle::before {
+    width: 0 !important;
+    left: 50% !important;
+  }
+  .mobile-dropdown-toggle.active-underline::before {
+    width: 100% !important;
+    left: 0 !important;
+  }
 }
 </style>
 
@@ -380,4 +388,5 @@ document.addEventListener('click', (e) => {
   }
 });
 </script>
+
 
