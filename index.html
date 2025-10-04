@@ -189,7 +189,6 @@ body {
   overflow-y: auto; /* allows scrolling if menu is taller than screen */
 }
 
-
 .mobile-nav.active {
   opacity: 1;
   pointer-events: auto;
@@ -214,12 +213,10 @@ body {
   background-color: #71C5D2;
   transition: width 0.3s ease, left 0.3s ease;
 }
-.mobile-nav a:hover,
-.mobile-nav a.active {
+.mobile-nav a:hover {
   color: #71C5D2;
 }
-.mobile-nav a:hover::after,
-.mobile-nav a.active::after {
+.mobile-nav a:hover::after {
   width: 100%;
   left: 0;
 }
@@ -251,18 +248,7 @@ body {
   bottom: -5px;
   width: 0;
   height: 2px;
-  background-color: #71C5D2;
   transition: width 0.3s ease, left 0.3s ease;
-}
-
-/* active (blue, underline always on, no animation) */
-.mobile-dropdown-toggle.active {
-  color: #71C5D2 !important;
-}
-.mobile-dropdown-toggle.active::before {
-  width: 100% !important;
-  left: 0 !important;
-  transition: none !important;
 }
 
 .mobile-dropdown {
@@ -356,28 +342,25 @@ body {
 </div>
 
 <script>
-const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobileNav');
-const kurzyToggle = document.getElementById('kurzyToggle');
-const mobileDropdown = document.getElementById('mobileDropdown');
-const dropdownWrapper = document.getElementById('dropdownWrapper');
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  const kurzyToggle = document.getElementById('kurzyToggle');
+  const mobileDropdown = document.getElementById('mobileDropdown');
+  const dropdownWrapper = document.getElementById('dropdownWrapper');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileNav.classList.toggle('active');
-});
+  // Hamburger toggle
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+  });
 
-kurzyToggle.addEventListener('click', (e) => {
-  e.preventDefault();
-  kurzyToggle.classList.toggle('open');
-  mobileDropdown.classList.toggle('open');
-  dropdownWrapper.classList.toggle('open');
-
-  if (kurzyToggle.classList.contains('open')) {
-    kurzyToggle.classList.add('active');
-  } else {
-    kurzyToggle.classList.remove('active');
-  }
-});
+  // Mobile dropdown toggle (KURZY)
+  kurzyToggle.addEventListener('click', (e) => {
+    e.preventDefault(); // prevent default link behavior
+    kurzyToggle.classList.toggle('open'); // toggle arrow/open state if needed
+    mobileDropdown.classList.toggle('open'); // show/hide dropdown
+    dropdownWrapper.classList.toggle('open'); // spacing adjustments
+  });
 </script>
+
 <!-- Topbar End -->
