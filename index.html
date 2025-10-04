@@ -1,4 +1,4 @@
-<!-- Topbar Start -->
+<!-- Topbar Zacatek -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -11,7 +11,6 @@ body {
   background: url('bg.png') no-repeat center center fixed;
   background-size: cover;
 }
-
 
 /* === Topbar === */
 .topbar {
@@ -79,7 +78,7 @@ body {
   left: 0;
 }
 
-/* === Dropdown (Desktop) === */
+/* === Dropdown (Pocitac) === */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -170,27 +169,26 @@ body {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* === Mobile Nav === */
+/* === Mobilni Nav === */
 .mobile-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* full viewport height */
+  height: 100vh; 
   background: rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* vertical centering */
+  justify-content: center; 
   gap: 16px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
   text-align: center;
   overflow-y: auto;
-  z-index: 0; /* above everything */
+  z-index: 0; 
 }
-
 .mobile-nav.active {
   opacity: 1;
   pointer-events: auto;
@@ -223,7 +221,6 @@ body {
   left: 0;
 }
 
-/* === Mobile Dropdown === */
 .mobile-dropdown-wrapper {
   display: flex;
   flex-direction: column;
@@ -242,7 +239,6 @@ body {
   transition: color 0.3s ease;
 }
 
-/* underline effect */
 .mobile-dropdown-toggle::before {
   content: "";
   position: absolute;
@@ -250,7 +246,16 @@ body {
   bottom: -5px;
   width: 0;
   height: 2px;
+  background-color: #71C5D2;
   transition: width 0.3s ease, left 0.3s ease;
+}
+
+.mobile-dropdown-toggle.active-underline {
+  color: #71C5D2;
+}
+.mobile-dropdown-toggle.active-underline::before {
+  width: 100%;
+  left: 0;
 }
 
 .mobile-dropdown {
@@ -276,7 +281,6 @@ body {
   font-size: 16px;
 }
 
-/* === Responsive === */
 @media (max-width: 900px) {
   .topbar {
     justify-content: center;
@@ -319,7 +323,7 @@ body {
   </nav>
 </header>
 
-<!-- Mobile Menu -->
+<!-- Mobilni Menu -->
 <div class="mobile-nav" id="mobileNav">
   <a href="#" class="active">ÚVOD</a>
 
@@ -341,29 +345,30 @@ body {
   <a href="#">REFERENCE</a>
   <a href="#">O NÁS</a>
   <a href="#">KONTAKT</a>
-
 </div>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  const kurzyToggle = document.getElementById('kurzyToggle');
-  const mobileDropdown = document.getElementById('mobileDropdown');
-  const dropdownWrapper = document.getElementById('dropdownWrapper');
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const kurzyToggle = document.getElementById('kurzyToggle');
+const mobileDropdown = document.getElementById('mobileDropdown');
+const dropdownWrapper = document.getElementById('dropdownWrapper');
 
-  // Hamburger toggle
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileNav.classList.toggle('active');
-  });
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileNav.classList.toggle('active');
+});
 
-  // Mobile dropdown toggle (KURZY)
-  kurzyToggle.addEventListener('click', (e) => {
-    e.preventDefault(); // prevent default link behavior
-    kurzyToggle.classList.toggle('open'); // toggle arrow/open state if needed
-    mobileDropdown.classList.toggle('open'); // show/hide dropdown
-    dropdownWrapper.classList.toggle('open'); // spacing adjustments
-  });
+kurzyToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  mobileDropdown.classList.toggle('open');
+  dropdownWrapper.classList.toggle('open');
+  
+  if (mobileDropdown.classList.contains('open')) {
+    kurzyToggle.classList.add('active-underline');
+  } else {
+    kurzyToggle.classList.remove('active-underline');
+  }
+});
 </script>
-
-<!-- Topbar End -->
+<!-- Topbar Konec -->
