@@ -173,20 +173,22 @@ body {
 /* === Mobile Nav === */
 .mobile-nav {
   position: fixed;
-  top: 90px;
+  top: 0;
   left: 0;
   width: 100%;
-  height: calc(100vh - 90px); /* use vh for full height */
-  background: rgba(0, 0, 0, 0.6); /* keep your semi-transparent background */
+  height: 100vh; /* full viewport height */
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* centers text vertically */
+  justify-content: center; /* vertical centering */
   gap: 16px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
-  overflow-y: auto; /* allows scrolling if menu is taller than screen */
+  text-align: center;
+  overflow-y: auto;
+  z-index: 0; /* above everything */
 }
 
 .mobile-nav.active {
@@ -197,7 +199,7 @@ body {
   text-shadow: 0px 0px 20px #000000;
   position: relative;
   color: #fff;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -271,7 +273,7 @@ body {
   margin-top: 4px;
 }
 .mobile-dropdown a {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 /* === Responsive === */
@@ -339,7 +341,7 @@ body {
   <a href="#">REFERENCE</a>
   <a href="#">O NÁS</a>
   <a href="#">KONTAKT</a>
-  <div style="height:15px;"></div>
+
 </div>
 
 <script>
