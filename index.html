@@ -361,14 +361,19 @@ hamburger.addEventListener('click', () => {
 
 kurzyToggle.addEventListener('click', (e) => {
   e.preventDefault();
-  mobileDropdown.classList.toggle('open');
-  dropdownWrapper.classList.toggle('open');
-  
-  if (mobileDropdown.classList.contains('open')) {
-    kurzyToggle.classList.add('active-underline');
-  } else {
+  const isOpen = mobileDropdown.classList.toggle('open');
+  dropdownWrapper.classList.toggle('open', isOpen);
+  kurzyToggle.classList.toggle('active-underline', isOpen);
+});
+
+document.addEventListener('click', (e) => {
+  const isClickInside = dropdownWrapper.contains(e.target) || hamburger.contains(e.target);
+  if (!isClickInside) {
+    mobileDropdown.classList.remove('open');
+    dropdownWrapper.classList.remove('open');
     kurzyToggle.classList.remove('active-underline');
   }
 });
 </script>
 <!-- Topbar Konec -->
+
