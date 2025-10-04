@@ -362,6 +362,7 @@ hamburger.addEventListener('click', () => {
 kurzyToggle.addEventListener('click', (e) => {
   e.preventDefault();
   e.stopPropagation();
+
   const isOpen = mobileDropdown.classList.toggle('open');
   dropdownWrapper.classList.toggle('open', isOpen);
   kurzyToggle.classList.toggle('active-underline', isOpen);
@@ -371,9 +372,12 @@ dropdownWrapper.addEventListener('click', (e) => {
   e.stopPropagation();
 });
 
-document.addEventListener('click', () => {
-  mobileDropdown.classList.remove('open');
-  dropdownWrapper.classList.remove('open');
-  kurzyToggle.classList.remove('active-underline');
+document.addEventListener('click', (e) => {
+  if (!dropdownWrapper.contains(e.target)) {
+    mobileDropdown.classList.remove('open');
+    dropdownWrapper.classList.remove('open');
+    kurzyToggle.classList.remove('active-underline');
+  }
 });
 </script>
+
